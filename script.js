@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const endText = document.getElementById('endText');
     const fallingPetalsEl = document.getElementById('fallingPetals');
     const scene = document.querySelector('.scene');
-    const loveMessage = document.getElementById('loveMessage');
+    
     // ❤️ Special message
     const loveMessage = document.getElementById('loveMessage');
 
