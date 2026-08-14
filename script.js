@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             {
                 threshold: 100,
-                text: 'Ready to bloom!'
+                text: 'A Little Something For You 😚❤️'
             }
         ];
 
