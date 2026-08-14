@@ -497,6 +497,88 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ================================
+    // MADE BY Typing Effect
+    // ================================
+
+    function typeAboutMe() {
+
+        const title =
+            document.getElementById('aboutTitle');
+
+        const name =
+            document.getElementById('aboutName');
+
+        const message =
+            document.getElementById('aboutMessage');
+
+        if (!title || !name || !message) {
+            return;
+        }
+
+        const texts = [
+            {
+                element: title,
+                text: 'MADE BY'
+            },
+            {
+                element: name,
+                text: '气VENØM三ノ乙, aka ~Pritam Halder.'
+            },
+            {
+                element: message,
+                text: 'This little surprise was made especially for you. ❤️'
+            }
+        ];
+
+        texts.forEach(item => {
+            item.element.textContent = '';
+        });
+
+        let current = 0;
+
+        function typeText() {
+
+            if (current >= texts.length) {
+                return;
+            }
+
+            const item = texts[current];
+
+            let index = 0;
+
+            function typeCharacter() {
+
+                if (index < item.text.length) {
+
+                    item.element.textContent +=
+                        item.text.charAt(index);
+
+                    index++;
+
+                    setTimeout(
+                        typeCharacter,
+                        45
+                    );
+
+                } else {
+
+                    current++;
+
+                    setTimeout(
+                        typeText,
+                        350
+                    );
+                }
+            }
+
+            typeCharacter();
+        }
+
+        typeText();
+    }
+
+
+    // ================================
     // Main Rose Animation
     // ================================
 
@@ -544,6 +626,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 loveMessage.classList.add('visible');
 
             }
+
+            // Start MADE BY typing effect
+            setTimeout(() => {
+
+                typeAboutMe();
+
+            }, 500);
 
         }, 6500);
     }
