@@ -1120,4 +1120,18 @@ body {
         margin:
             18px auto 16px;
     }
+
+    .signature {
+    position: fixed;
+    right: 18px;
+    bottom: 14px;
+    z-index: 100;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    color: rgba(255, 255, 255, 0.55);
+    text-shadow: 0 0 10px rgba(255, 40, 80, 0.35);
+    pointer-events: none;
+    user-select: none;
+    }
 }
