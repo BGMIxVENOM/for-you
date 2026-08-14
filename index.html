@@ -4,73 +4,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>🌹 Rose Blooming from Code</title>
-<link rel="icon" type="image/png" href="favicon.png">
-<meta name="description" content="A single div transforms into a beautiful blooming 3D rose.">
+
+    <!-- Page Title -->
+    <title>🌹 For You — A Rose Made with Code</title>
+
+    <!-- Description -->
+    <meta name="description"
+        content="A little something made just for you. Watch a beautiful 3D rose grow and bloom from code. ❤️🌹">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+
+    <!-- Open Graph / WhatsApp / Facebook / Discord Preview -->
+    <meta property="og:title" content="🌹 For You — A Rose Made with Code">
+
+    <meta property="og:description"
+        content="A little something made just for you. Watch a beautiful 3D rose grow and bloom from code. ❤️🌹">
+
+    <meta property="og:image"
+        content="https://bgmixvenom.github.io/for-you/preview.png">
+
+    <meta property="og:url"
+        content="https://bgmixvenom.github.io/for-you/">
+
+    <meta property="og:type" content="website">
+
+    <!-- Twitter / X Preview -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="twitter:title"
+        content="🌹 For You — A Rose Made with Code">
+
+    <meta name="twitter:description"
+        content="A little something made just for you. ❤️🌹">
+
+    <meta name="twitter:image"
+        content="https://bgmixvenom.github.io/for-you/preview.png">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@500;700&family=Fira+Code:wght@500&display=swap"
         rel="stylesheet">
+
+    <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+    <!-- Background -->
     <div class="vignette"></div>
 
-
     <div class="spotlight"></div>
+
     <div class="ambient-light" id="ambientLight"></div>
 
+
+    <!-- Opening / Loading Screen -->
     <div class="trigger-overlay" id="triggerOverlay">
+
         <div class="glass-card">
+
             <div class="card-glow"></div>
+
             <div class="rose-icon">🌹</div>
+
             <h2 class="title">Love.css</h2>
+
             <div class="loading-bar-container">
                 <div class="loading-bar" id="loadingBar"></div>
             </div>
-            <p class="status-text" id="statusText">Ready to compile...</p>
+
+            <p class="status-text" id="statusText">
+                Ready to compile...
+            </p>
+
             <button class="start-button" id="startButton" disabled>
-                <span class="btn-text">Tap to Bloom</span>
+
+                <span class="btn-text">
+                    Tap to Bloom
+                </span>
+
                 <span class="btn-shine"></span>
+
             </button>
+
         </div>
+
     </div>
 
+
+    <!-- Rose Scene -->
     <div class="scene">
+
         <div class="rose-wrapper" id="roseWrapper">
+
+            <!-- Stem + Leaves -->
             <div class="stem-group">
+
                 <div class="stem" id="stem">
                     <div class="stem-highlight"></div>
                 </div>
+
                 <div class="thorn thorn-1" id="thorn1"></div>
+
                 <div class="thorn thorn-2" id="thorn2"></div>
+
                 <div class="leaf leaf-left" id="leafLeft">
                     <div class="leaf-vein"></div>
                 </div>
+
                 <div class="leaf leaf-right" id="leafRight">
                     <div class="leaf-vein"></div>
                 </div>
+
             </div>
 
+
+            <!-- Calyx -->
             <div class="calyx" id="calyx"></div>
 
+
+            <!-- Rose -->
             <div class="rose-head" id="roseHead">
+
                 <div class="rose-glow"></div>
+
                 <div class="rose-glow-inner"></div>
+
             </div>
+
         </div>
+
     </div>
 
+
+    <!-- Ending Message -->
     <div class="end-text" id="endText">
-        <p class="tagline" id="tagline">i coded this for you</p>
-        <span class="rose-emoji">🌹</span>
+
+        <p class="tagline" id="tagline">
+            i coded this for you
+        </p>
+
+        <span class="rose-emoji">
+            🌹
+        </span>
+
     </div>
 
+
+    <!-- Falling Petals -->
     <div id="fallingPetals"></div>
 
+
+    <!-- JavaScript -->
     <script src="script.js"></script>
+
 </body>
 
 </html>
