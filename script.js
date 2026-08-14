@@ -15,6 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const fallingPetalsEl = document.getElementById('fallingPetals');
     const scene = document.querySelector('.scene');
 
+    // ❤️ Special message
+    const loveMessage = document.getElementById('loveMessage');
+
+
     const PETAL_LAYERS = [
         { count: 4, w: 24, h: 46, curl: 78, delayBase: 0, tz: 2, cls: 'petal-bud' },
         { count: 5, w: 34, h: 58, curl: 65, delayBase: 0.25, tz: 9, cls: 'petal-core' },
@@ -39,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function startCardLoader() {
         const duration = 2400;
+
         const steps = [
             { threshold: 20, text: 'Loading Love.css...' },
             { threshold: 50, text: 'Growing digital petals...' },
@@ -50,18 +55,32 @@ document.addEventListener('DOMContentLoaded', () => {
         let startTimestamp = null;
 
         function animateLoader(timestamp) {
+
             if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+
+            const progress = Math.min(
+                (timestamp - startTimestamp) / duration,
+                1
+            );
+
             const percent = Math.floor(progress * 100);
 
             loadingBar.style.width = `${percent}%`;
-            const activeStep = steps.find(s => percent <= s.threshold) || steps[steps.length - 1];
+
+            const activeStep =
+                steps.find(s => percent <= s.threshold) ||
+                steps[steps.length - 1];
+
             statusText.textContent = activeStep.text;
 
             if (progress < 1) {
+
                 requestAnimationFrame(animateLoader);
+
             } else {
+
                 startButton.removeAttribute('disabled');
+
             }
         }
 
@@ -70,52 +89,132 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function createSepals() {
-        const step = 360 / SEPALS_COUNT;
-        for (let i = 0; i < SEPALS_COUNT; i++) {
-            const sepal = document.createElement('div');
-            sepal.className = 'sepal';
-            const angle = i * step + (Math.random() - 0.5) * 5;
-            const delay = 0.3 + i * 0.06;
-            const curl = 18 + Math.random() * 8;
 
-            sepal.style.setProperty('--sepal-angle', `${angle}deg`);
-            sepal.style.setProperty('--sepal-curl', `${curl}deg`);
-            sepal.style.setProperty('--sepal-delay', `${delay}s`);
+        const step = 360 / SEPALS_COUNT;
+
+        for (let i = 0; i < SEPALS_COUNT; i++) {
+
+            const sepal = document.createElement('div');
+
+            sepal.className = 'sepal';
+
+            const angle =
+                i * step +
+                (Math.random() - 0.5) * 5;
+
+            const delay =
+                0.3 +
+                i * 0.06;
+
+            const curl =
+                18 +
+                Math.random() * 8;
+
+            sepal.style.setProperty(
+                '--sepal-angle',
+                `${angle}deg`
+            );
+
+            sepal.style.setProperty(
+                '--sepal-curl',
+                `${curl}deg`
+            );
+
+            sepal.style.setProperty(
+                '--sepal-delay',
+                `${delay}s`
+            );
+
             calyx.appendChild(sepal);
         }
     }
 
+
     function createPetals() {
+
         PETAL_LAYERS.forEach((layer, li) => {
-            const angleStep = 360 / layer.count;
-            const layerOffset = li * 24 + (Math.random() - 0.5) * 8;
+
+            const angleStep =
+                360 / layer.count;
+
+            const layerOffset =
+                li * 24 +
+                (Math.random() - 0.5) * 8;
 
             for (let i = 0; i < layer.count; i++) {
-                const petal = document.createElement('div');
-                petal.className = `petal ${layer.cls}`;
 
-                const angle = layerOffset + i * angleStep + (Math.random() - 0.5) * 5;
-                const delay = layer.delayBase + i * 0.05;
-                const curlJitter = (Math.random() - 0.5) * 6;
-                const scaleJitter = 0.94 + Math.random() * 0.12;
-                const bloomDur = 2.1 + Math.random() * 0.4;
+                const petal =
+                    document.createElement('div');
 
-                petal.style.width = `${layer.w}px`;
-                petal.style.height = `${layer.h}px`;
-                petal.style.setProperty('--angle', `${angle}deg`);
-                petal.style.setProperty('--curl', `${layer.curl + curlJitter}deg`);
-                petal.style.setProperty('--scale', scaleJitter);
-                petal.style.setProperty('--delay', `${delay}s`);
-                petal.style.setProperty('--tz', `${layer.tz}px`);
-                petal.style.setProperty('--bloom-dur', `${bloomDur}s`);
+                petal.className =
+                    `petal ${layer.cls}`;
+
+                const angle =
+                    layerOffset +
+                    i * angleStep +
+                    (Math.random() - 0.5) * 5;
+
+                const delay =
+                    layer.delayBase +
+                    i * 0.05;
+
+                const curlJitter =
+                    (Math.random() - 0.5) * 6;
+
+                const scaleJitter =
+                    0.94 +
+                    Math.random() * 0.12;
+
+                const bloomDur =
+                    2.1 +
+                    Math.random() * 0.4;
+
+                petal.style.width =
+                    `${layer.w}px`;
+
+                petal.style.height =
+                    `${layer.h}px`;
+
+                petal.style.setProperty(
+                    '--angle',
+                    `${angle}deg`
+                );
+
+                petal.style.setProperty(
+                    '--curl',
+                    `${layer.curl + curlJitter}deg`
+                );
+
+                petal.style.setProperty(
+                    '--scale',
+                    scaleJitter
+                );
+
+                petal.style.setProperty(
+                    '--delay',
+                    `${delay}s`
+                );
+
+                petal.style.setProperty(
+                    '--tz',
+                    `${layer.tz}px`
+                );
+
+                petal.style.setProperty(
+                    '--bloom-dur',
+                    `${bloomDur}s`
+                );
 
                 roseHead.appendChild(petal);
             }
         });
     }
 
+
     function growStem() {
+
         return new Promise(resolve => {
+
             stem.classList.add('grow');
 
             setTimeout(() => {
@@ -130,96 +229,243 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
     function bloom() {
+
         calyx.classList.add('visible');
+
         ambientLight.classList.add('visible');
+
         roseHead.classList.add('blooming');
     }
 
+
     function spawnFallingPetal() {
+
         if (fallingPetalsEl.childElementCount > 10) return;
 
-        const petal = document.createElement('div');
-        petal.className = 'falling-petal';
+        const petal =
+            document.createElement('div');
 
-        const w = 10 + Math.random() * 12;
-        const h = w * (1.25 + Math.random() * 0.15);
-        const x = 20 + Math.random() * 60;
-        const y = 3 + Math.random() * 10;
-        const dur = 5.5 + Math.random() * 3.5;
-        const delay = Math.random() * 0.6;
+        petal.className =
+            'falling-petal';
 
-        const colors = FALLING_PETAL_COLORS[Math.floor(Math.random() * FALLING_PETAL_COLORS.length)];
+        const w =
+            10 +
+            Math.random() * 12;
 
-        const sign = () => (Math.random() > 0.5 ? 1 : -1);
-        const s1 = sign() * (15 + Math.random() * 25);
-        const s2 = sign() * (10 + Math.random() * 20);
-        const s3 = sign() * (20 + Math.random() * 30);
-        const s4 = sign() * (10 + Math.random() * 15);
+        const h =
+            w *
+            (1.25 + Math.random() * 0.15);
 
-        petal.style.left = `${x}vw`;
-        petal.style.top = `${y}vh`;
-        petal.style.setProperty('--fp-w', `${w}px`);
-        petal.style.setProperty('--fp-h', `${h}px`);
-        petal.style.setProperty('--fp-c1', colors[0]);
-        petal.style.setProperty('--fp-c2', colors[1]);
-        petal.style.setProperty('--f-dur', `${dur}s`);
-        petal.style.setProperty('--f-delay', `${delay}s`);
-        petal.style.setProperty('--s1', `${s1}px`);
-        petal.style.setProperty('--s2', `${s2}px`);
-        petal.style.setProperty('--s3', `${s3}px`);
-        petal.style.setProperty('--s4', `${s4}px`);
+        const x =
+            20 +
+            Math.random() * 60;
+
+        const y =
+            3 +
+            Math.random() * 10;
+
+        const dur =
+            5.5 +
+            Math.random() * 3.5;
+
+        const delay =
+            Math.random() * 0.6;
+
+        const colors =
+            FALLING_PETAL_COLORS[
+                Math.floor(
+                    Math.random() *
+                    FALLING_PETAL_COLORS.length
+                )
+            ];
+
+        const sign =
+            () =>
+                Math.random() > 0.5
+                    ? 1
+                    : -1;
+
+        const s1 =
+            sign() *
+            (15 + Math.random() * 25);
+
+        const s2 =
+            sign() *
+            (10 + Math.random() * 20);
+
+        const s3 =
+            sign() *
+            (20 + Math.random() * 30);
+
+        const s4 =
+            sign() *
+            (10 + Math.random() * 15);
+
+        petal.style.left =
+            `${x}vw`;
+
+        petal.style.top =
+            `${y}vh`;
+
+        petal.style.setProperty(
+            '--fp-w',
+            `${w}px`
+        );
+
+        petal.style.setProperty(
+            '--fp-h',
+            `${h}px`
+        );
+
+        petal.style.setProperty(
+            '--fp-c1',
+            colors[0]
+        );
+
+        petal.style.setProperty(
+            '--fp-c2',
+            colors[1]
+        );
+
+        petal.style.setProperty(
+            '--f-dur',
+            `${dur}s`
+        );
+
+        petal.style.setProperty(
+            '--f-delay',
+            `${delay}s`
+        );
+
+        petal.style.setProperty(
+            '--s1',
+            `${s1}px`
+        );
+
+        petal.style.setProperty(
+            '--s2',
+            `${s2}px`
+        );
+
+        petal.style.setProperty(
+            '--s3',
+            `${s3}px`
+        );
+
+        petal.style.setProperty(
+            '--s4',
+            `${s4}px`
+        );
 
         fallingPetalsEl.appendChild(petal);
 
         setTimeout(() => {
-            if (petal.parentNode) petal.remove();
+
+            if (petal.parentNode) {
+                petal.remove();
+            }
+
         }, (dur + delay) * 1000 + 300);
     }
 
+
     function startFallingPetals() {
+
         for (let i = 0; i < 3; i++) {
-            setTimeout(() => spawnFallingPetal(), i * 300);
+
+            setTimeout(() => {
+                spawnFallingPetal();
+            }, i * 300);
+
         }
 
-        fallingPetalInterval = setInterval(() => {
-            spawnFallingPetal();
-        }, 2200);
+        fallingPetalInterval =
+            setInterval(() => {
+                spawnFallingPetal();
+            }, 2200);
     }
 
 
     async function startAnimationSequence() {
+
         await growStem();
+
         await delay(100);
+
         bloom();
 
+
+        // 🌹 Rose rotation
         setTimeout(() => {
+
             roseWrapper.classList.add('rotating');
+
         }, 2600);
 
-        setTimeout(() => startFallingPetals(), 3400);
 
+        // 🌸 Falling petals
         setTimeout(() => {
+
+            startFallingPetals();
+
+        }, 3400);
+
+
+        // ❤️ Small ending text
+        setTimeout(() => {
+
             endText.classList.add('visible');
+
         }, 4600);
+
+
+        // 💌 Special love message
+        // Appears after the rose has bloomed.
+        setTimeout(() => {
+
+            if (loveMessage) {
+
+                loveMessage.classList.add('visible');
+
+            }
+
+        }, 6500);
     }
+
 
     function delay(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
+
+        return new Promise(resolve => {
+            setTimeout(resolve, ms);
+        });
     }
 
+
     startButton.addEventListener('click', () => {
+
         triggerOverlay.classList.add('fade-out');
 
         setTimeout(() => {
+
             startAnimationSequence();
+
         }, 800);
+
     });
+
+
+    // Create rose parts
     createSepals();
     createPetals();
 
+
+    // Start loading screen
     setTimeout(() => {
+
         startCardLoader();
+
     }, 400);
 
 });
